@@ -63,14 +63,14 @@
         <button
           (click)="signOut()"
           type="button"
-          class="btn btn-sm rounded-lg bg-white text-secondary-content"
+          class="btn btn-sm rounded-lg bg-white text-secondary-content hover:bg-white/80"
         >
           Sign out
         </button>
       </div>
       <ng-template #login>
         <button
-          class="btn btn-sm rounded-lg bg-white text-secondary-content"
+          class="btn btn-sm rounded-lg bg-white text-secondary-content hover:bg-white/80"
           onclick="authModal.showModal()"
         >
           Get Started
@@ -80,7 +80,7 @@
       <!-- Open the modal using ID.showModal() method -->
 
       <dialog id="authModal" class="modal">
-        <div class="modal-box max-w-none w-1/2 h-4/5 rounded-xl">
+        <div class="modal-box max-w-none w-1/3 h-3/5 rounded-xl">
           <div class="size-full flex flex-col items-center justify-center">
             <div class="w-full h-1/2 flex flex-row items-center justify-center">
               <div class="relative h-full w-1/2">
