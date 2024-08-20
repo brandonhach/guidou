@@ -21,6 +21,8 @@
     "@ng-icons/core": "^29.4.0",
     "@ng-icons/devicon": "^29.4.0",
     "@ng-icons/ionicons": "^29.4.0",
+    "@supabase/supabase-js": "^2.45.1",
+    "guidou": "file:",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
@@ -41,5 +43,10 @@
     "postcss": "^8.4.41",
     "tailwindcss": "^3.4.10",
     "typescript": "~5.5.2"
+  },
+  "overrides": {
+    "@supabase/supabase-js": {
+      "@supabase/auth-js": "2.61.0"
+    }
   }
 }
