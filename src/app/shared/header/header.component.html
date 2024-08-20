@@ -45,7 +45,21 @@
         <p>Get the app</p>
       </div>
       <!-- Auth Modal -->
-      <div *ngIf="this.userData(); else login">
+      <div
+        *ngIf="user$ | async as user; else login"
+        class="flex flex-row gap-2 justify-start items-center"
+      >
+        <!-- Avatar -->
+
+        <img
+          [src]="user.user_metadata?.['avatar_url']"
+          fill
+          priority
+          class="rounded-full size-12"
+        />
+
+        <!-- Name -->
+        <p>{{ user.user_metadata?.['full_name']}}</p>
         <button
           (click)="signOut()"
           type="button"

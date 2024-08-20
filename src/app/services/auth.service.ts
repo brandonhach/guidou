@@ -18,16 +18,20 @@ export class AuthService {
     );
 
     this.supabase.auth.onAuthStateChange((event, session) => {
-      console.log(event, session);
-
-      // token refresh second arg
-      if (event === 'SIGNED_IN') {
+      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         this.user.next(session!.user);
         this.router.navigate(['/']);
       } else {
         this.user.next(null);
       }
     });
+
+    this.fetchInitialUserData();
+  }
+
+  async fetchInitialUserData() {
+    const { data: user } = await this.supabase.auth.getUser();
+    this.user.next(user.user);
   }
 
   async signInWithGithub() {

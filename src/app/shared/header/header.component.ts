@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
@@ -16,6 +16,8 @@ import {
   diGithubOriginal,
 } from '@ng-icons/devicon/original';
 import { AuthService } from '../../services/auth.service';
+import { User } from '@supabase/supabase-js';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -36,14 +38,14 @@ import { AuthService } from '../../services/auth.service';
     }),
   ],
 })
-export class HeaderComponent {
-  userData = signal({});
+export class HeaderComponent implements OnInit {
+  user$: Observable<User | null>;
+
   constructor(private auth: AuthService, private router: Router) {
-    this.auth.currentUser.subscribe((user) => {
-      console.log(user);
-      this.userData.set(user?.user_metadata?.['email']);
-    });
+    this.user$ = this.auth.currentUser;
   }
+
+  ngOnInit() {}
 
   async handleAuth(provider: string) {
     if (provider === 'GITHUB') {
@@ -56,7 +58,7 @@ export class HeaderComponent {
   }
 
   async signOut() {
-    this.auth.signOut();
+    await this.auth.signOut();
     this.router.navigate(['/']);
   }
 }
