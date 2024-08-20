@@ -35,6 +35,17 @@ export class AuthService {
       provider: 'github',
     });
   }
+  async signInWithDiscord() {
+    await this.supabase.auth.signInWithOAuth({
+      provider: 'discord',
+    });
+  }
+
+  async signInWithGoogle() {
+    await this.supabase.auth.signInWithOAuth({
+      provider: 'google',
+    });
+  }
 
   async signOut() {
     await this.supabase.auth.signOut();

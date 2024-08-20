@@ -8,8 +8,13 @@ import {
   ionCreate,
   ionBookSharp,
   ionLogIn,
+  ionLogoDiscord,
 } from '@ng-icons/ionicons';
-import { diGoogleOriginal } from '@ng-icons/devicon/original';
+import {
+  diGoogleOriginal,
+  diAndroidOriginal,
+  diGithubOriginal,
+} from '@ng-icons/devicon/original';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -25,6 +30,9 @@ import { AuthService } from '../../services/auth.service';
       ionCreate,
       ionBookSharp,
       ionLogIn,
+      diAndroidOriginal,
+      diGithubOriginal,
+      ionLogoDiscord,
     }),
   ],
 })
@@ -37,9 +45,14 @@ export class HeaderComponent {
     });
   }
 
-  async handleAuth() {
-    const response = await this.auth.signInWithGithub();
-    console.log(response);
+  async handleAuth(provider: string) {
+    if (provider === 'GITHUB') {
+      await this.auth.signInWithGithub();
+    } else if (provider === 'DISCORD') {
+      await this.auth.signInWithDiscord();
+    } else {
+      await this.auth.signInWithGoogle();
+    }
   }
 
   async signOut() {

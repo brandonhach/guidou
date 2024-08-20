@@ -41,7 +41,7 @@
         class="badge rounded-xl badge-lg flex flex-row items-center justify-start gap-1"
       >
         <ng-icon name="ionLogoApple"></ng-icon
-        ><ng-icon name="diGoogleOriginal"></ng-icon>
+        ><ng-icon name="diAndroidOriginal"></ng-icon>
         <p>Get the app</p>
       </div>
       <!-- Auth Modal -->
@@ -63,22 +63,49 @@
         </button>
       </ng-template>
 
+      <!-- Open the modal using ID.showModal() method -->
+
       <dialog id="authModal" class="modal">
         <div class="modal-box max-w-none w-1/2 h-4/5 rounded-xl">
-          <h3 class="text-lg font-bold">Hello!</h3>
-          <p class="py-4">Press ESC key or click the button below to close</p>
-
-          <button class="btn" (click)="handleAuth()" type="button">
-            Sign in with GitHub
-          </button>
-
-          <div class="modal-action">
-            <form method="dialog">
-              <!-- if there is a button in form, it will close the modal -->
-              <button class="btn">Close</button>
-            </form>
+          <div class="size-full flex flex-col items-center justify-center">
+            <div class="w-full h-1/2 flex flex-row items-center justify-center">
+              <div class="relative h-full w-1/2">
+                <img ngSrc="assets/img/brand/logo.png" fill priority />
+              </div>
+            </div>
+            <div
+              class="w-full h-1/2 flex flex-col items-center justify-center gap-4"
+            >
+              <button
+                class="btn w-2/3 rounded-xl"
+                (click)="handleAuth('GOOGLE')"
+                type="button"
+              >
+                <ng-icon name="diGoogleOriginal" class="text-xl"></ng-icon>
+                Sign in with Google
+              </button>
+              <button
+                class="btn w-2/3 rounded-xl"
+                (click)="handleAuth('GITHUB')"
+                type="button"
+              >
+                <ng-icon name="diGithubOriginal" class="text-xl"></ng-icon>
+                Sign in with GitHub
+              </button>
+              <button
+                class="btn w-2/3 rounded-xl"
+                (click)="handleAuth('DISCORD')"
+                type="button"
+              >
+                <ng-icon name="ionLogoDiscord" class="text-xl"></ng-icon>
+                Sign in with Discord
+              </button>
+            </div>
           </div>
         </div>
+        <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+        </form>
       </dialog>
     </div>
   </div>
