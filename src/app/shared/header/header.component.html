@@ -37,22 +37,41 @@
     </div>
     <!-- Auth -->
     <div class="w-1/3 h-full flex flex-row items-center justify-end gap-4">
-      <div class="flex flex-row items-center justify-start gap-1">
+      <div
+        class="badge rounded-xl badge-lg flex flex-row items-center justify-start gap-1"
+      >
         <ng-icon name="ionLogoApple"></ng-icon
         ><ng-icon name="diGoogleOriginal"></ng-icon>
         <p>Get the app</p>
       </div>
       <!-- Auth Modal -->
-      <button
-        class="btn btn-sm rounded-lg bg-white text-secondary-content"
-        onclick="authModal.showModal()"
-      >
-        <ng-icon name="ionLogIn" class="text-xl"></ng-icon> Get Started
-      </button>
-      <dialog id="authModal" class="modal modal-open">
+      <div *ngIf="this.userData(); else login">
+        <button
+          (click)="signOut()"
+          type="button"
+          class="btn btn-sm rounded-lg bg-white text-secondary-content"
+        >
+          Sign out
+        </button>
+      </div>
+      <ng-template #login>
+        <button
+          class="btn btn-sm rounded-lg bg-white text-secondary-content"
+          onclick="authModal.showModal()"
+        >
+          Get Started
+        </button>
+      </ng-template>
+
+      <dialog id="authModal" class="modal">
         <div class="modal-box max-w-none w-1/2 h-4/5 rounded-xl">
           <h3 class="text-lg font-bold">Hello!</h3>
           <p class="py-4">Press ESC key or click the button below to close</p>
+
+          <button class="btn" (click)="handleAuth()" type="button">
+            Sign in with GitHub
+          </button>
+
           <div class="modal-action">
             <form method="dialog">
               <!-- if there is a button in form, it will close the modal -->
