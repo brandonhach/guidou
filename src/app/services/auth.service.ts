@@ -20,7 +20,6 @@ export class AuthService {
     this.supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         this.user.next(session!.user);
-        this.router.navigate(['/']);
       } else {
         this.user.next(null);
       }
@@ -32,6 +31,16 @@ export class AuthService {
   async fetchInitialUserData() {
     const { data: user } = await this.supabase.auth.getUser();
     this.user.next(user.user);
+  }
+
+  async fetchUserId() {
+    const { data, error } = await this.supabase.auth.getUser();
+
+    if (error) {
+      console.error('Error fetching user:', error);
+      return null;
+    }
+    return data.user.id || null;
   }
 
   async signInWithGithub() {

@@ -1,0 +1,45 @@
+<form
+  [formGroup]="guideForm"
+  (ngSubmit)="onSubmit()"
+  class="size-full space-y-8"
+>
+  <!-- Title -->
+
+  <label class="sr-only" for="title">Title</label>
+  <input
+    class="w-full rounded-lg border-gray-200 p-3 text-sm"
+    placeholder="Title"
+    type="text"
+    formControlName="title"
+  />
+
+  <!-- City -->
+
+  <label class="sr-only" for="city">City</label>
+  <input
+    class="w-full rounded-lg border-gray-200 p-3 text-sm"
+    placeholder="City"
+    type="text"
+    formControlName="city"
+  />
+
+  <label class="sr-only" for="message"></label>
+
+  <textarea
+    class="w-full rounded-lg border-gray-200 p-3 text-sm resize-none"
+    placeholder="Describe what you recommend"
+    rows="8"
+    id="description"
+    draggable="false"
+    formControlName="description"
+  ></textarea>
+
+  <div class="mt-4">
+    <button
+      type="submit"
+      class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+    >
+      Create
+    </button>
+  </div>
+</form>

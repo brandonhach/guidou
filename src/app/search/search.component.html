@@ -1,0 +1,34 @@
+<div class="overflow-x-hidden w-full h-full">
+  <div class="px-4 pt-4">
+    <h1 class="text-4xl font-bold">{{ query }}</h1>
+  </div>
+
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="guides.length > 0; else noResults">
+      <tr *ngFor="let guide of guides; let i = index" class="bg-base-200 h-32">
+        <th>{{ i + 1 }}</th>
+        <td>
+          <a
+            [routerLink]="'/guide/' + guide.id"
+            class="hover:underline no-underline"
+          >
+            <h1 class="text-2xl font-semibold">{{ guide.title }}</h1></a
+          >
+        </td>
+        <td>{{ guide.job }}</td>
+        <td>{{ guide.favoriteColor }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noResults>
+    <p>No guides found for the city ""</p>
+  </ng-template>
+</div>

@@ -17,12 +17,20 @@ import {
 } from '@ng-icons/devicon/original';
 import { AuthService } from '../../services/auth.service';
 import { User } from '@supabase/supabase-js';
-import { Observable } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import cities from 'cities.json';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, RouterLink, NgIconComponent],
+  imports: [
+    CommonModule,
+    NgOptimizedImage,
+    RouterLink,
+    NgIconComponent,
+    ReactiveFormsModule,
+  ],
   templateUrl: './header.component.html',
   viewProviders: [
     provideIcons({
@@ -40,9 +48,15 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   user$: Observable<User | null>;
+  searchForm: FormGroup;
 
   constructor(private auth: AuthService, private router: Router) {
     this.user$ = this.auth.currentUser;
+
+    // Searchbar
+    this.searchForm = new FormGroup({
+      query: new FormControl(''),
+    });
   }
 
   ngOnInit() {}
@@ -60,5 +74,11 @@ export class HeaderComponent implements OnInit {
   async signOut() {
     await this.auth.signOut();
     this.router.navigate(['/']);
+  }
+
+  onSubmit() {
+    const query = this.searchForm?.value.query;
+    this.router.navigate(['/search', query]);
+    // this.db.fetchGuideByCity(this.searchForm.value.query);
   }
 }

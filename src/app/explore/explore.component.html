@@ -1,0 +1,50 @@
+<div class="w-screen">
+  <section class="hover:cursor-default">
+    <div
+      class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16"
+    >
+      <div class="mx-auto max-w-lg text-center hover:cursor-default">
+        <h2 class="text-3xl font-bold sm:text-4xl">Discover</h2>
+        <p class="mt-4 text-lg text-white">
+          Explore the boxes below to check out our curated guide for these
+          cities and discover what each has to offer!
+        </p>
+      </div>
+
+      <!-- Content -->
+      <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <a
+          *ngFor="let item of exploreItems"
+          routerLink=""
+          class="bg-base-200 rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-blue-400/10 hover:shadow-blue-400/10"
+        >
+          <div class="relative w-full h-3/4">
+            <img
+              [src]="item.image"
+              priority
+              class="object-cover size-full rounded-xl"
+            />
+          </div>
+          <div class="w-full h-1/4 pt-4">
+            <div class="flex flex-row justify-between items-center">
+              <h2 class="mt-4 text-xl font-bold text-white">
+                {{ item.title }}
+              </h2>
+              <!-- Author -->
+              <div class="relative size-12 rounded-full">
+                <img
+                  [src]="item.author"
+                  priority
+                  class="object-cover size-full rounded-xl"
+                />
+              </div>
+            </div>
+            <p class="mt-1 text-sm text-white">
+              {{ item.description }}
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
