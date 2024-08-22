@@ -23,13 +23,32 @@ export class DatabaseService {
         .eq('city', city);
       if (error) {
         console.error('Error finding guide:', error);
-        return []; // Return an empty array instead of null
+        return [];
       } else {
-        return data || []; // Ensure you return an empty array if data is null
+        console.log(data);
+        return data || [];
       }
     } catch (error) {
       console.error('Unexpected error:', error);
-      return []; // Return an empty array in case of an unexpected error
+      return [];
+    }
+  }
+
+  async getGuideById(id: string): Promise<any[]> {
+    try {
+      const { data, error } = await this.supabase
+        .from('guide')
+        .select('*')
+        .eq('id', id);
+      if (error) {
+        console.error('Error finding guide by id:', error);
+        return [];
+      } else {
+        return data || [];
+      }
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      return [];
     }
   }
 
