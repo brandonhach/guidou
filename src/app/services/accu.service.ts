@@ -1,0 +1,46 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable, switchMap } from 'rxjs';
+import { accuEnv } from '../../environments/environment.development';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AccuService {
+  private weatherURL = 'http://dataservice.accuweather.com/forecasts/v1';
+  private locationURL =
+    'http://dataservice.accuweather.com/locations/v1/cities';
+
+  constructor(private http: HttpClient) {}
+
+  getHourlyForecast(city: string): Observable<any> {
+    return this.getCityCode(city).pipe(
+      switchMap((cityCode) =>
+        this.http.get<any>(
+          `${this.weatherURL}/hourly/1hour/${cityCode}?apikey=${accuEnv.api_key}&details=false`
+        )
+      ),
+      map((res) => {
+        if (res) {
+          return res;
+        }
+        throw new Error('Weather data not found');
+      })
+    );
+  }
+
+  getCityCode(city: string): Observable<any> {
+    return this.http
+      .get<any>(
+        `${this.locationURL}/search?apikey=${accuEnv.api_key}&q=${city}`
+      )
+      .pipe(
+        map((res) => {
+          if (res) {
+            return res[0].Key;
+          }
+          throw new Error('City not found');
+        })
+      );
+  }
+}
