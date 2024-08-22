@@ -44,20 +44,44 @@ export class AuthService {
   }
 
   async signInWithGithub() {
-    await this.supabase.auth.signInWithOAuth({
-      provider: 'github',
-    });
+    try {
+      const res = await this.supabase.auth.signInWithOAuth({
+        provider: 'github',
+      });
+      if (res.error) {
+        console.error('Fail to sign in with Github', res.error);
+        return;
+      }
+    } catch (error) {
+      console.log('Unexpected error using Github OAuth', error);
+    }
   }
   async signInWithDiscord() {
-    await this.supabase.auth.signInWithOAuth({
-      provider: 'discord',
-    });
+    try {
+      const res = await this.supabase.auth.signInWithOAuth({
+        provider: 'discord',
+      });
+      if (res.error) {
+        console.error('Fail to sign in with Github', res.error);
+        return;
+      }
+    } catch (error) {
+      console.log('Unexpected error using Github OAuth', error);
+    }
   }
 
   async signInWithGoogle() {
-    await this.supabase.auth.signInWithOAuth({
-      provider: 'google',
-    });
+    try {
+      const res = await this.supabase.auth.signInWithOAuth({
+        provider: 'google',
+      });
+      if (res.error) {
+        console.error('Fail to sign in with Github', res.error);
+        return;
+      }
+    } catch (error) {
+      console.log('Unexpected error using Github OAuth', error);
+    }
   }
 
   async signOut() {
