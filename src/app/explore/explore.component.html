@@ -16,26 +16,24 @@
           (placeChanged)="toValue = $event"
         ></app-place-autocomplete>
       </div>
-      <!-- Places Card -->
-      <div class="w-full h-3/4 rounded-xl">
-        <div class="w-full h-1/2">
-          <app-place-details-card [data]="fromValue"></app-place-details-card>
-        </div>
-        <div class="w-full h-1/2">
-          <app-place-details-card [data]="toValue"></app-place-details-card>
-        </div>
-      </div>
+      <!-- Guide queries-->
+      <div class="w-full h-3/4 rounded-xl"></div>
     </div>
     <!-- Map -->
     <div class="col-span-2 row-span-1 bg-base-300 rounded-xl">
       <app-map-display [from]="fromValue" [to]="toValue"></app-map-display>
     </div>
-    <!-- Forecast -->
+
+    <!-- Places Card -->
     <div class="col-span-1 row-span-1 bg-base-300 rounded-xl">
-      <app-forecast-display [dataValue]="fromValue"></app-forecast-display>
+      <div class="w-full h-full">
+        <app-place-details-card [data]="fromValue"></app-place-details-card>
+      </div>
     </div>
     <div class="col-span-1 row-span-1 bg-base-300 rounded-xl">
-      <app-forecast-display [dataValue]="toValue"></app-forecast-display>
+      <div class="w-full h-full">
+        <app-place-details-card [data]="toValue"></app-place-details-card>
+      </div>
     </div>
   </div>
 </div>

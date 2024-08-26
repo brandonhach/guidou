@@ -1,5 +1,5 @@
 <div *ngIf="data?.address" class="card bg-base-200 shadow-xl size-full">
-  <figure>
+  <figure class="size-full">
     <img
       [src]="data?.imageUrl"
       height="100%"
@@ -7,11 +7,31 @@
       class="object-fill size-full"
     />
   </figure>
-  <div class="card-body">
-    <h2 class="card-title">
-      {{ data?.name }}
-      <ng-icon name="ionPin" class="text-2xl text-red-400"></ng-icon>
-    </h2>
+  <div class="card-body flex flex-row items-center justify-between">
+    <div
+      class="w-full h-full card-title flex flex-row items-center justify-between"
+    >
+      <div class="flex flex-row items-center justify-center">
+        <h1 class="font-bold text-2xl">{{ data?.name }}</h1>
+        <ng-icon name="ionPin" class="text-2xl text-red-400"></ng-icon>
+      </div>
+      <div class="flex flex-row items-center justify-center gap-2">
+        <p class="text-1xl">{{ forecastData[0].IconPhrase }}</p>
+        <ng-icon
+          *ngIf="forecastData[0].WeatherIcon <= 4"
+          name="ionSunny"
+          class="text-3xl text-yellow-300"
+        ></ng-icon>
+        <ng-icon
+          *ngIf="forecastData[0].WeatherIcon > 4"
+          name="ionCloud"
+          class="text-3xl text-white"
+        ></ng-icon>
+        <h1 class="text-2xl">
+          at {{ forecastData[0].Temperature.Value }} <span>F°</span>
+        </h1>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -20,6 +40,9 @@
     <div class="size-full flex flex-col items-center justify-center">
       <h1 class="text-2xl font-bold">Enter a city to load</h1>
       <progress class="progress w-56"></progress>
+      <p class="font-thin">
+        Note: It may take a few moment to load after you input a city
+      </p>
     </div>
   </figure>
   <div class="card-body">
@@ -28,3 +51,30 @@
     </div>
   </div>
 </div>
+
+<!-- Test component DO NOT DELETE -->
+<!-- <div *ngIf="!data?.address" class="card bg-base-200 shadow-xl size-full">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      height="100%"
+      width="100%"
+      class="object-fill size-full"
+    />
+  </figure>
+  <div class="card-body flex flex-row items-center justify-between">
+    <div
+      class="w-full h-full card-title flex flex-row items-center justify-between"
+    >
+      <div class="flex flex-row items-center justify-center">
+        <h1 class="font-bold text-2xl">Atlanta</h1>
+        <ng-icon name="ionPin" class="text-2xl text-red-400"></ng-icon>
+      </div>
+      <div class="flex flex-row items-center justify-center gap-2">
+        <p class="text-1xl">Sunny</p>
+        <ng-icon name="ionSunny" class="text-3xl text-yellow-300"></ng-icon>
+        <h1 class="text-2xl">at 84 <span>F°</span></h1>
+      </div>
+    </div>
+  </div>
+</div> -->

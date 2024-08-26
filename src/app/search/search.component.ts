@@ -3,12 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/db.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AccuService } from '../services/accu.service';
-import { ForecastBoxComponent } from '../shared/forecast-box/forecast-box.component';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, RouterLink, ForecastBoxComponent],
+  imports: [CommonModule, RouterLink],
   templateUrl: './search.component.html',
 })
 export class SearchComponent implements OnInit {
