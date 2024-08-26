@@ -1,32 +1,30 @@
-<div
-  *ngIf="data?.address"
-  class="card bg-base-100 image-full shadow-xl size-full"
->
+<div *ngIf="data?.address" class="card bg-base-200 shadow-xl size-full">
   <figure>
     <img
       [src]="data?.imageUrl"
       height="100%"
       width="100%"
-      class="object-fill"
+      class="object-fill size-full"
     />
   </figure>
   <div class="card-body">
-    <h2 class="card-title">{{ data?.name }}</h2>
-    <div class="card-actions justify-end">
-      <img mat-card-avatar [src]="data?.iconUrl" />
-    </div>
+    <h2 class="card-title">
+      {{ data?.name }}
+      <ng-icon name="ionPin" class="text-2xl text-red-400"></ng-icon>
+    </h2>
   </div>
 </div>
 
-<div *ngIf="!data?.address" class="card bg-base-100 image-full size-full">
-  <figure>
-    <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      class="bg-black"
-    />
+<div *ngIf="!data?.address" class="card bg-base-200 size-full shadow-xl">
+  <figure class="size-full">
+    <div class="size-full flex flex-col items-center justify-center">
+      <h1 class="text-2xl font-bold">Enter a city to load</h1>
+      <progress class="progress w-56"></progress>
+    </div>
   </figure>
   <div class="card-body">
-    <h2 class="card-title">Data</h2>
-    <div class="card-actions justify-end"></div>
+    <div class="card-title flex flex-row items-center justify-center">
+      <img ngSrc="assets/img/brand/brandArt.png" width="64" height="64" />
+    </div>
   </div>
 </div>
