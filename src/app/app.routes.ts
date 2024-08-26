@@ -3,7 +3,6 @@ import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { ExploreComponent } from './explore/explore.component';
 import { GuideComponent } from './guide/guide.component';
-import { SearchComponent } from './search/search.component';
 
 export const routes: Routes = [
   {
