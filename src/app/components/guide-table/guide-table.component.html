@@ -1,0 +1,42 @@
+<table class="table table-zebra w-full">
+  <thead class="bg-base-300/100 text-lg">
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="guides.length > 0; else noResults">
+    <tr *ngFor="let guide of guides; let i = index" class="bg-base-200">
+      <th>{{ i + 1 }}</th>
+      <td>
+        <a
+          [routerLink]="'/guide/' + guide.id"
+          class="hover:underline no-underline"
+        >
+          <h1 class="text-2xl font-semibold">{{ guide.title }}</h1>
+        </a>
+      </td>
+      <td>{{ guide.job }}</td>
+      <td>{{ guide.favoriteColor }}</td>
+    </tr>
+  </tbody>
+  <ng-template #noResults>
+    <tbody>
+      <tr>
+        <td [attr.colspan]="4" [attr.rowspan]="5" class="text-center">
+          <div class="flex flex-col items-center justify-center h-full">
+            <div class="w-1/2 h-1/2 pt-5">
+              <img
+                src="https://media1.tenor.com/m/wiqeVvUwGrwAAAAd/kiryu-yakuza.gif"
+                alt=""
+                class="rounded-md"
+              />
+            </div>
+            <h1 class="font-bold text-3xl">No guide found for this place...</h1>
+            <p class="font-normal text-xl">Be the first to create one!</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </ng-template>
+</table>

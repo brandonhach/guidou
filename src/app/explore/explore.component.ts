@@ -8,6 +8,7 @@ import {
 } from '../components/place-autocomplete/place-autocomplete.component';
 import { PlaceDetailsCardComponent } from '../components/place-details-card/place-details-card.component';
 import { MapDisplayComponent } from '../components/map-display/map-display.component';
+import { GuideTableComponent } from '../components/guide-table/guide-table.component';
 
 @Component({
   selector: 'app-explore',
@@ -19,6 +20,7 @@ import { MapDisplayComponent } from '../components/map-display/map-display.compo
     PlaceAutocompleteComponent,
     PlaceDetailsCardComponent,
     MapDisplayComponent,
+    GuideTableComponent,
   ],
   templateUrl: './explore.component.html',
 })

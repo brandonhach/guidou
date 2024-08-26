@@ -17,7 +17,9 @@
         ></app-place-autocomplete>
       </div>
       <!-- Guide queries-->
-      <div class="w-full h-3/4 rounded-xl"></div>
+      <div class="w-full h-3/4 rounded-xl bg-base-300">
+        <app-guide-table [to]="toValue"></app-guide-table>
+      </div>
     </div>
     <!-- Map -->
     <div class="col-span-2 row-span-1 bg-base-300 rounded-xl">
