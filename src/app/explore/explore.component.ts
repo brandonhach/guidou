@@ -1,15 +1,28 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
-import { ExploreItem } from '../../config/siteconfig';
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import {
+  PlaceAutocompleteComponent,
+  PlaceSearchResult,
+} from '../components/place-autocomplete/place-autocomplete.component';
+import { PlaceDetailsCardComponent } from '../components/place-details-card/place-details-card.component';
+import { MapDisplayComponent } from '../components/map-display/map-display.component';
 
 @Component({
   selector: 'app-explore',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, RouterLink], // Add CommonModule here
+  imports: [
+    CommonModule,
+    NgOptimizedImage,
+    RouterLink,
+    PlaceAutocompleteComponent,
+    PlaceDetailsCardComponent,
+    MapDisplayComponent,
+  ],
   templateUrl: './explore.component.html',
 })
 export class ExploreComponent {
-  exploreItems = ExploreItem;
+  fromValue: PlaceSearchResult | undefined;
+  toValue: PlaceSearchResult | undefined;
 }

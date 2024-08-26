@@ -1,50 +1,36 @@
-<div class="w-screen">
-  <section class="hover:cursor-default">
+<div class="w-screen h-[60rem] px-16">
+  <div><h1 class="font-bold text-4xl pb-4">🧭 Explore</h1></div>
+  <div class="size-full rounded-xl grid grid-cols-3 grid-rows-2 gap-10">
     <div
-      class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16"
+      class="col-span-1 row-span-2 rounded-xl flex flex-col items-center justify-start gap-10 h-full"
     >
-      <div class="mx-auto max-w-lg text-center hover:cursor-default">
-        <h2 class="text-3xl font-bold sm:text-4xl">Discover</h2>
-        <p class="mt-4 text-lg text-white">
-          Explore the boxes below to check out our curated guide for these
-          cities and discover what each has to offer!
-        </p>
+      <!-- Search Place -->
+      <div
+        class="w-full h-1/4 bg-base-300 rounded-xl flex flex-row items-center justify-center gap-4"
+      >
+        <app-place-autocomplete
+          (placeChanged)="fromValue = $event"
+        ></app-place-autocomplete>
+        <h1>To</h1>
+        <app-place-autocomplete
+          (placeChanged)="toValue = $event"
+        ></app-place-autocomplete>
       </div>
-
-      <!-- Content -->
-      <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <a
-          *ngFor="let item of exploreItems"
-          routerLink=""
-          class="bg-base-200 rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-blue-400/10 hover:shadow-blue-400/10"
-        >
-          <div class="relative w-full h-3/4">
-            <img
-              [src]="item.image"
-              priority
-              class="object-cover size-full rounded-xl"
-            />
-          </div>
-          <div class="w-full h-1/4 pt-4">
-            <div class="flex flex-row justify-between items-center">
-              <h2 class="mt-4 text-xl font-bold text-white">
-                {{ item.title }}
-              </h2>
-              <!-- Author -->
-              <div class="relative size-12 rounded-full">
-                <img
-                  [src]="item.author"
-                  priority
-                  class="object-cover size-full rounded-xl"
-                />
-              </div>
-            </div>
-            <p class="mt-1 text-sm text-white">
-              {{ item.description }}
-            </p>
-          </div>
-        </a>
+      <!-- Places Card -->
+      <div class="w-full h-3/4 rounded-xl flex flex-col gap-6">
+        <div class="w-full h-1/2">
+          <app-place-details-card [data]="fromValue"></app-place-details-card>
+        </div>
+        <div class="w-full h-1/2">
+          <app-place-details-card [data]="toValue"></app-place-details-card>
+        </div>
       </div>
     </div>
-  </section>
+    <!-- Map -->
+    <div class="col-span-2 row-span-1 bg-base-300 rounded-xl">
+      <app-map-display [from]="fromValue" [to]="toValue"></app-map-display>
+    </div>
+    <div class="col-span-1 row-span-1 bg-base-300 rounded-xl"></div>
+    <div class="col-span-1 row-span-1 bg-base-300 rounded-xl"></div>
+  </div>
 </div>

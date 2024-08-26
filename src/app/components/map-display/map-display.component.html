@@ -1,0 +1,18 @@
+<div class="flex flex-col items-center justify-center size-full rounded-xl">
+  <!-- Google Map component binded with zoom  -->
+  <google-map
+    #map
+    [zoom]="zoom"
+    height="100%"
+    width="100%"
+    class="size-full max-h-none"
+  >
+    <!-- Directions render  -->
+    <map-directions-renderer
+      *ngIf="directionResult"
+      [directions]="directionResult"
+    ></map-directions-renderer>
+    <!-- Marker  -->
+    <map-marker *ngIf="markerPosition" [position]="markerPosition"></map-marker
+  ></google-map>
+</div>

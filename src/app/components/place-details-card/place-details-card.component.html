@@ -1,0 +1,32 @@
+<div
+  *ngIf="data?.address"
+  class="card bg-base-100 image-full shadow-xl size-full"
+>
+  <figure>
+    <img
+      [src]="data?.imageUrl"
+      height="100%"
+      width="100%"
+      class="object-fill"
+    />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">{{ data?.name }}</h2>
+    <div class="card-actions justify-end">
+      <img mat-card-avatar [src]="data?.iconUrl" />
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!data?.address" class="card bg-base-100 image-full size-full">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      class="bg-black"
+    />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">Data</h2>
+    <div class="card-actions justify-end"></div>
+  </div>
+</div>

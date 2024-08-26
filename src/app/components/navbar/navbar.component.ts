@@ -18,6 +18,11 @@ import {
   diAndroidOriginal,
   diGithubOriginal,
 } from '@ng-icons/devicon/original';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import {
+  PlaceSearchResult,
+  PlaceAutocompleteComponent,
+} from '../place-autocomplete/place-autocomplete.component';
 
 @Component({
   selector: 'app-navbar',
@@ -28,6 +33,7 @@ import {
     RouterLink,
     NgIconComponent,
     ReactiveFormsModule,
+    PlaceAutocompleteComponent,
   ],
   templateUrl: './navbar.component.html',
   viewProviders: [
@@ -75,9 +81,8 @@ export class NavbarComponent implements OnInit {
   }
 
   onSubmit() {
-    const query = this.searchForm?.value.query;
-    this.router.navigate(['/search', query]);
+    // const query = this.searchForm?.value.query;
+    // this.router.navigate(['/search', from, to]);
     // this.db.fetchGuideByCity(this.searchForm.value.query);
   }
 }
-import { CommonModule, NgOptimizedImage } from '@angular/common';

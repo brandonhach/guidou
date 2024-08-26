@@ -1,9 +1,9 @@
-<div class="mx-6 mt-4">
+<div class="w-full flex flex-row items-center justify-center px-6 pt-4">
   <div
-    class="flex flex-row items-center justify-between w-full h-16 pt-1 bg-base-300 rounded-xl px-4"
+    class="flex flex-row items-center justify-between w-1/2 h-16 pt-1 bg-base-300 rounded-xl px-4"
   >
     <!-- Image -->
-    <div class="w-1/3 h-full flex flex-row items-center justify-start gap-4">
+    <div class="w-1/2 h-full flex flex-row items-center justify-start gap-4">
       <a class="relative h-12 w-14" routerLink="/">
         <img ngSrc="assets/img/brand/brandArt.png" fill priority />
       </a>
@@ -22,12 +22,12 @@
       </div>
     </div>
     <!-- Search -->
-    <form
+    <!-- <form
       [formGroup]="searchForm"
       (submit)="onSubmit()"
       class="w-1/3 h-80 flex flex-row items-center justify-center gap-1 relative"
-    >
-      <label
+    > -->
+    <!-- <label
         for="search"
         class="size-full relative flex flex-row items-center justify-center"
       >
@@ -35,17 +35,32 @@
           name="ionSearchSharp"
           class="absolute text-2xl top-[19px] left-1"
         ></ng-icon>
-        <!-- form input -->
+
         <input
           type="text"
           formControlName="query"
           placeholder="Search for a city"
           class="pl-8 input input-bordered w-full rounded-xl"
-      /></label>
-    </form>
+      /></label> -->
+    <!-- <div class="flex flex-row justify-start items-center gap-10 px-4 pt-10">
+        <div>
+          <app-place-autocomplete
+            (placeChanged)="fromValue = $event"
+          ></app-place-autocomplete>
+        </div>
+        <h1>To</h1>
+        <div>
+          <app-place-autocomplete
+            (placeChanged)="toValue = $event"
+          ></app-place-autocomplete>
+        </div>
+      </div>
+      <button type="submit">asd</button>
+    </form> -->
+    <!-- Autocomplete placeholder -->
 
     <!-- Auth -->
-    <div class="w-1/3 h-full flex flex-row items-center justify-end gap-4">
+    <div class="w-1/2 h-full flex flex-row items-center justify-end gap-4">
       <div
         class="badge rounded-xl badge-lg flex flex-row items-center justify-start gap-1"
       >
