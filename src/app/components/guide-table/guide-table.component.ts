@@ -4,7 +4,7 @@ import { DatabaseService } from '../../services/db.service';
 import { CommonModule } from '@angular/common';
 import { PlaceSearchResult } from '../place-autocomplete/place-autocomplete.component';
 
-type Guide = {
+export type Guide = {
   id: string;
   city: string;
   description: string;

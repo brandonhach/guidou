@@ -1,1 +1,20 @@
-<div class="p-8"><p>guide works!</p></div>
+<div class="p-10">
+  <div class="w-full h-[60rem] flex flex-col items-center justify-start">
+    <div *ngIf="isLoading" class="text-white w-2/3 h-2/3">
+      <span class="loading loading-spinner loading-lg"></span>Loading...
+    </div>
+    <div
+      *ngIf="!isLoading && guide"
+      class="pt-10 w-2/3 h-2/3 bg-base-300 rounded-xl flex flex-col items-start justify-start"
+    >
+      <div class="w-full h-1/6 px-4">
+        <h1 class="text-4xl font-bold text-white">{{ guide.title }}</h1>
+        <p>Date created: {{ guide.created_at }}</p>
+      </div>
+      <p class="w-full h-5/6 px-4">{{ guide.description }}</p>
+    </div>
+    <div *ngIf="!isLoading && !guide" class="text-white">
+      Guide not found or an error occurred.
+    </div>
+  </div>
+</div>
