@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, switchMap } from 'rxjs';
-import { accuEnv } from '../../environments/environment.development';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class AccuService {
     return this.getCityCode(city).pipe(
       switchMap((cityCode) =>
         this.http.get<any>(
-          `${this.weatherURL}/hourly/1hour/${cityCode}?apikey=${accuEnv.api_key}&details=false`
+          `${this.weatherURL}/hourly/1hour/${cityCode}?apikey=${environment.ACCU_KEY}&details=false`
         )
       ),
       map((res) => {
@@ -32,7 +32,7 @@ export class AccuService {
   getCityCode(city: string): Observable<any> {
     return this.http
       .get<any>(
-        `${this.locationURL}/search?apikey=${accuEnv.api_key}&q=${city}`
+        `${this.locationURL}/search?apikey=${environment.ACCU_KEY}&q=${city}`
       )
       .pipe(
         map((res) => {
