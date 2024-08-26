@@ -25,7 +25,6 @@ export class DatabaseService {
         console.error('Error finding guide:', error);
         return [];
       } else {
-        console.log(data);
         return data || [];
       }
     } catch (error) {
