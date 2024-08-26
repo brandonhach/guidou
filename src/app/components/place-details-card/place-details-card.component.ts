@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { PlaceSearchResult } from '../place-autocomplete/place-autocomplete.component';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
@@ -9,7 +9,7 @@ import { Tforecast } from '../../types/type';
 @Component({
   selector: 'app-place-details-card',
   standalone: true,
-  imports: [CommonModule, NgIconComponent, CommonModule, NgOptimizedImage],
+  imports: [CommonModule, NgIconComponent, NgOptimizedImage],
   templateUrl: './place-details-card.component.html',
   viewProviders: [
     provideIcons({
@@ -19,14 +19,14 @@ import { Tforecast } from '../../types/type';
     }),
   ],
 })
-export class PlaceDetailsCardComponent implements OnInit {
+export class PlaceDetailsCardComponent implements OnChanges {
   @Input() data: PlaceSearchResult | undefined;
   @Input() forecastData: Tforecast[] = [];
 
   constructor(private accu: AccuService) {}
 
-  async ngOnChanges(changes: SimpleChanges) {
-    if (changes['data'] && this.data && this.data !== undefined) {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['data'] && this.data) {
       this.accu.getHourlyForecast(this.data.address).subscribe((data) => {
         this.forecastData = data;
       });
@@ -39,6 +39,4 @@ export class PlaceDetailsCardComponent implements OnInit {
       minute: '2-digit',
     });
   }
-
-  ngOnInit(): void {}
 }

@@ -1,4 +1,7 @@
-<div *ngIf="data?.address" class="card bg-base-200 shadow-xl size-full">
+<div
+  *ngIf="data?.address && forecastData.length > 0 && forecastData[0]"
+  class="card bg-base-200 shadow-xl size-full"
+>
   <figure class="size-full">
     <img
       [src]="data?.imageUrl"
@@ -16,7 +19,7 @@
         <ng-icon name="ionPin" class="text-2xl text-red-400"></ng-icon>
       </div>
       <div class="flex flex-row items-center justify-center gap-2">
-        <p class="text-1xl">{{ forecastData[0].IconPhrase }}</p>
+        <p class="text-1xl">{{ forecastData?.[0]?.IconPhrase }}</p>
         <ng-icon
           *ngIf="forecastData[0].WeatherIcon <= 4"
           name="ionSunny"
@@ -28,7 +31,7 @@
           class="text-3xl text-white"
         ></ng-icon>
         <h1 class="text-2xl">
-          at {{ forecastData[0].Temperature.Value }} <span>F°</span>
+          at {{ forecastData?.[0]?.Temperature?.Value }} <span>F°</span>
         </h1>
       </div>
     </div>
