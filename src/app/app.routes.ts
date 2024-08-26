@@ -28,9 +28,4 @@ export const routes: Routes = [
     title: 'Guide Page',
     component: GuideComponent,
   },
-  {
-    path: 'search/:query',
-    title: 'Search Page',
-    component: SearchComponent,
-  },
 ];
