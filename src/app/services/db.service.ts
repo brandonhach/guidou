@@ -1,6 +1,7 @@
 import { environment } from '../../environments/environment.development';
 import { Injectable } from '@angular/core';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
+import { Guide } from '../components/guide-table/guide-table.component';
 
 @Injectable({
   providedIn: 'root',
@@ -33,21 +34,23 @@ export class DatabaseService {
     }
   }
 
-  async getGuideById(id: string): Promise<any[]> {
+  async getGuideById(id: string): Promise<Guide | null> {
     try {
       const { data, error } = await this.supabase
         .from('guide')
         .select('*')
-        .eq('id', id);
+        .eq('id', id)
+        .single();
+
       if (error) {
         console.error('Error finding guide by id:', error);
-        return [];
+        return null;
       } else {
-        return data || [];
+        return data as Guide;
       }
     } catch (error) {
       console.error('Unexpected error:', error);
-      return [];
+      return null;
     }
   }
 
