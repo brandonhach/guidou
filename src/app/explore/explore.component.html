@@ -30,7 +30,12 @@
     <div class="col-span-2 row-span-1 bg-base-300 rounded-xl">
       <app-map-display [from]="fromValue" [to]="toValue"></app-map-display>
     </div>
-    <div class="col-span-1 row-span-1 bg-base-300 rounded-xl"></div>
-    <div class="col-span-1 row-span-1 bg-base-300 rounded-xl"></div>
+    <!-- Forecast -->
+    <div class="col-span-1 row-span-1 bg-base-300 rounded-xl">
+      <app-forecast-display [dataValue]="fromValue"></app-forecast-display>
+    </div>
+    <div class="col-span-1 row-span-1 bg-base-300 rounded-xl">
+      <app-forecast-display [dataValue]="toValue"></app-forecast-display>
+    </div>
   </div>
 </div>
