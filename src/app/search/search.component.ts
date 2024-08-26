@@ -10,7 +10,6 @@ import { ForecastBoxComponent } from '../shared/forecast-box/forecast-box.compon
   standalone: true,
   imports: [CommonModule, RouterLink, ForecastBoxComponent],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.css',
 })
 export class SearchComponent implements OnInit {
   public guides: any[] = [];

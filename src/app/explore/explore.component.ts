@@ -9,7 +9,6 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, NgOptimizedImage, RouterLink], // Add CommonModule here
   templateUrl: './explore.component.html',
-  styleUrls: ['./explore.component.css'],
 })
 export class ExploreComponent {
   exploreItems = ExploreItem;

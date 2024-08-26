@@ -5,8 +5,6 @@
       <div
         class="w-full h-2/3 flex flex-col items-center justify-center lg:col-span-2 lg:py-12 bg-base-300 rounded-xl gap-4"
       >
-        <!-- Caroseul -->
-        <app-unsplash-carousel></app-unsplash-carousel>
         <!-- Search Unsplash BTN -->
         <button
           class="btn bg-white text-black rounded-xl"
@@ -15,9 +13,7 @@
           open modal
         </button>
         <dialog id="unsplash" class="modal">
-          <div class="modal-box max-w-none w-[60rem] h-[60rem]">
-            <app-unsplash></app-unsplash>
-          </div>
+          <div class="modal-box max-w-none w-[60rem] h-[60rem]"></div>
           <form method="dialog" class="modal-backdrop">
             <button>close</button>
           </form>
