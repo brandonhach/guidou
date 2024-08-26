@@ -25,6 +25,7 @@
     "@ng-icons/ionicons": "^29.4.0",
     "@supabase/supabase-js": "^2.45.1",
     "cities.json": "^1.1.39",
+    "dotenv": "^16.4.5",
     "guidou": "file:",
     "ngx-toastr": "^19.0.0",
     "package.json": "^2.0.1",
