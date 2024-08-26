@@ -1,5 +1,8 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { User } from '@supabase/supabase-js';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
@@ -15,14 +18,9 @@ import {
   diAndroidOriginal,
   diGithubOriginal,
 } from '@ng-icons/devicon/original';
-import { AuthService } from '../../services/auth.service';
-import { User } from '@supabase/supabase-js';
-import { map, Observable, startWith } from 'rxjs';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import cities from 'cities.json';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-navbar',
   standalone: true,
   imports: [
     CommonModule,
@@ -31,7 +29,7 @@ import cities from 'cities.json';
     NgIconComponent,
     ReactiveFormsModule,
   ],
-  templateUrl: './header.component.html',
+  templateUrl: './navbar.component.html',
   viewProviders: [
     provideIcons({
       ionLogoApple,
@@ -46,7 +44,7 @@ import cities from 'cities.json';
     }),
   ],
 })
-export class HeaderComponent implements OnInit {
+export class NavbarComponent implements OnInit {
   user$: Observable<User | null>;
   searchForm: FormGroup;
 
@@ -82,3 +80,4 @@ export class HeaderComponent implements OnInit {
     // this.db.fetchGuideByCity(this.searchForm.value.query);
   }
 }
+import { CommonModule, NgOptimizedImage } from '@angular/common';

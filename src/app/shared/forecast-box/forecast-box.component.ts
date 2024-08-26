@@ -15,7 +15,6 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
     }),
   ],
   templateUrl: './forecast-box.component.html',
-  styleUrl: './forecast-box.component.css',
 })
 export class ForecastBoxComponent {
   @Input() forecastData: Tforecast[] = [];

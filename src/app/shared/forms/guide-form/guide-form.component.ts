@@ -9,7 +9,6 @@ import { DatabaseService } from '../../../services/db.service';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './guide-form.component.html',
-  styleUrl: './guide-form.component.css',
 })
 export class GuideFormComponent {
   guideForm: FormGroup;
