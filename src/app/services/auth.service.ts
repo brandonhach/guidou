@@ -13,8 +13,8 @@ export class AuthService {
 
   constructor(private router: Router) {
     this.supabase = createClient(
-      environment.supabase.url,
-      environment.supabase.key
+      environment.SUPABASE_URL,
+      environment.SUPABASE_KEY
     );
 
     this.supabase.auth.onAuthStateChange((event, session) => {
