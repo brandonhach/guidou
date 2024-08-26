@@ -1,10 +1,17 @@
 <form
   [formGroup]="guideForm"
   (ngSubmit)="onSubmit()"
-  class="size-full space-y-8"
+  class="w-full h-fit pb-10 space-y-8 bg-base-300 rounded-xl p-4"
 >
-  <!-- Title -->
+  <!-- City -->
+  <div class="w-full">
+    <app-place-autocomplete
+      (placeChanged)="onPlaceChanged($event)"
+    ></app-place-autocomplete
+    ><span class="loading loading-ball loading-lg text-green-500"></span>
+  </div>
 
+  <!-- Title -->
   <label class="sr-only" for="title">Title</label>
   <input
     class="w-full rounded-lg border-gray-200 p-3 text-sm"
@@ -13,18 +20,7 @@
     formControlName="title"
   />
 
-  <!-- City -->
-
-  <label class="sr-only" for="city">City</label>
-  <input
-    class="w-full rounded-lg border-gray-200 p-3 text-sm"
-    placeholder="City"
-    type="text"
-    formControlName="city"
-  />
-
-  <label class="sr-only" for="message"></label>
-
+  <!-- Description -->
   <textarea
     class="w-full rounded-lg border-gray-200 p-3 text-sm resize-none"
     placeholder="Describe what you recommend"
@@ -34,10 +30,10 @@
     formControlName="description"
   ></textarea>
 
-  <div class="mt-4">
+  <div class="pt-4">
     <button
       type="submit"
-      class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+      class="inline-block w-full rounded-lg bg-orange-600 px-5 py-3 font-bold text-white sm:w-auto"
     >
       Create
     </button>
