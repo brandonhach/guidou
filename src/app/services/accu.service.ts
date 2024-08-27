@@ -7,9 +7,9 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root',
 })
 export class AccuService {
-  private weatherURL = 'http://dataservice.accuweather.com/forecasts/v1';
+  private weatherURL = 'https://dataservice.accuweather.com/forecasts/v1';
   private locationURL =
-    'http://dataservice.accuweather.com/locations/v1/cities';
+    'https://dataservice.accuweather.com/locations/v1/cities';
 
   constructor(private http: HttpClient) {}
 
