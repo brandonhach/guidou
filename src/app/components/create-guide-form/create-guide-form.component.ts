@@ -13,6 +13,7 @@ import {
   PlaceAutocompleteComponent,
 } from '../place-autocomplete/place-autocomplete.component';
 import { ToastrService } from 'ngx-toastr';
+import { AuthApiError } from '@supabase/supabase-js';
 
 @Component({
   selector: 'app-create-guide-form',
@@ -86,15 +87,24 @@ export class CreateGuideFormComponent {
         this.guideForm.value.description,
         this.guideForm.value.user_id
       )
-      .then(() => {
-        this.toastr.success('Guide created successfully!', 'Success');
+      .then((res) => {
+        if (res) {
+          this.toastr.success('Guide created successfully!', 'Success');
+        }
       })
       .catch((error) => {
-        this.toastr.error(
-          'Failed to create guide. Please try again later.',
-          'Error'
-        );
-        console.error('Error creating guide:', error);
+        if (error instanceof AuthApiError) {
+          if (error.message === 'invalid claim: missing sub claim') {
+            this.toastr.error('You must be logged in to create.');
+          } else {
+            this.toastr.error(
+              'Failed to create guide. Please try again later.',
+              'Error'
+            );
+          }
+        }
+        // console.error('Error creating guide:', error);
+        this.toastr.error('Unexpected error occured.');
       });
   }
 }
