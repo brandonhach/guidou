@@ -71,6 +71,11 @@ export class CreateGuideFormComponent {
           this.toastr.error('Description must be at least 10 characters long.');
         }
       }
+      if (this.guideForm.controls['user_id'].errors) {
+        if (this.guideForm.controls['user_id'].errors['required']) {
+          this.toastr.error('You must be logged in to create.');
+        }
+      }
       return;
     }
 
