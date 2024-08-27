@@ -39,7 +39,7 @@ Guidou is a simple web app that lets users explore curated guides based on the c
 
 ### Breakdown 
 * Supabase handles the authentications, and database entirely. I defined a few schemas for tables and configured each OAuth provider I used i.e. Discord, Google, etc.
-* To use Supabase API, Accuweather, etc, I had to create services in Angular for separation of concerns & reusability. Angular is designed to use dependency injections, so I had to use services to inject into components to use them.
+* To use Supabase API, Accuweather, etc, I had to create services in Angular for separation of concerns & reusability. Angular is designed to use dependency injections, so I use the services to inject into components for utilization.
 * I opted out of the traditional module architectural approach for a newer, and more flexible approach called standalone.
   * Standalone components allow me to create components without needing a `NgModule`.
   * It made developing simpler because of faster prototyping & similarity to how I was developing with ** React/Next**.
