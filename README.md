@@ -23,7 +23,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Guidou is a web app that lets users explore curated guides based on the cities they pinpoint using the autocomplete address input bar powered by Google's Map API. Users can sign up to create their guide for others to read. I made this project in Angular to expand my front-end capabilities. This project is pretty simple and was made in a week with no prior knowledge of Angular & Supabase. After this project was completed, I learned how to develop an Angular project & how to use Supabase as a backend.
+Guidou is a simple web app that lets users explore curated guides based on the cities they pinpoint using the autocomplete address input bar powered by Google's Map API. Users can sign up to create their guide for others to read. I made this project in Angular to expand my front-end capabilities. This project is pretty simple and was made in a week with no prior knowledge of Angular & Supabase. After this project was completed, I learned how to develop an Angular project & how to use Supabase as a backend.
 
 ### Built With
 ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
