@@ -1,4 +1,4 @@
-<div class="w-screen h-[60rem] px-16">
+<div class="w-screen h-[60rem] px-16 md:p-8 xl:px-32 xl:py-0">
   <div><h1 class="font-bold text-4xl pb-4">🧭 Explore</h1></div>
   <div class="size-full rounded-xl grid grid-cols-3 grid-rows-2 gap-10">
     <div
@@ -6,7 +6,7 @@
     >
       <!-- Search Place -->
       <div
-        class="w-full h-1/4 bg-base-300 rounded-xl flex flex-row items-center justify-center gap-4"
+        class="w-full h-1/4 bg-base-300 rounded-xl flex flex-col xl:flex-row items-center justify-center gap-4"
       >
         <app-place-autocomplete
           (placeChanged)="fromValue = $event"

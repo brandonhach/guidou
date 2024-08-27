@@ -30,7 +30,6 @@ export class GuideTableComponent implements OnChanges {
     if (changes['to'] && this.to) {
       this.isLoading = true;
       try {
-        const address = this.to.address;
         this.guides = await this.db.fetchGuideByCity(this.to.address);
       } catch (error) {
         console.error('Error fetching guides:', error);
